@@ -193,4 +193,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 [![npm version](https://badge.fury.io/js/express-starter-cli.svg)](https://www.npmjs.com/package/express-starter-cli)
 [![downloads](https://img.shields.io/npm/dm/express-starter-cli.svg)](https://www.npmjs.com/package/express-starter-cli)
-[![license](https://img.shields.io/github/license/yourusername/your-repo-name)](https://github.com/yourusername/your-repo-name/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/yourusername/your-repo-name)](https://github.com/aniketraut16/express-starter-cli/blob/main/LICENSE)
