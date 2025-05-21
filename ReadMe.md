@@ -27,16 +27,11 @@ This will make the `express-starter` command available globally in your terminal
 Once the CLI is installed, you can create a new project by running:
 
 ```bash
-express-starter <project-name>
+express-starter
 ```
 
 Replace `<project-name>` with the name of your project.
 
-### Example:
-
-```bash
-express-starter my-awesome-app
-```
 
 This command will create a folder called `my-awesome-app` with the following structure:
 
@@ -82,85 +77,6 @@ nodemon index.js
 ```
 
 By default, the server will be running on `http://localhost:5000`. You can change the port by updating the `PORT` value in your `.env` file.
-
-## Folder Structure Overview
-
-- **`config/connect.js`**: Sets up the connection to MongoDB using `mongoose`.
-- **`controllers/`**: This folder is where you define functions for your routes (e.g., handling user registration, login, etc.).
-- **`middleware/`**: Any custom middleware, like JWT authentication middleware, goes here.
-- **`models/`**: Mongoose models that define the structure of your database collections.
-- **`routes/`**: Define your application’s routes and link them to the controller functions.
-- **`utils/`**: Helper functions, such as generating JSON Web Tokens, are stored here.
-
-### Sample Files:
-
-#### config/connect.js
-
-```javascript
-const mongoose = require("mongoose");
-
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      serverSelectionTimeoutMS: 30000,
-    });
-    console.log("MongoDB connected...");
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
-
-module.exports = connectDB;
-```
-
-#### index.js
-
-```javascript
-const express = require("express");
-const connectDB = require("./config/connect");
-const dotenv = require("dotenv");
-
-// Load environment variables from .env
-dotenv.config();
-
-// Initialize Express
-const app = express();
-
-// Connect to MongoDB
-connectDB();
-
-// Middleware to parse incoming JSON requests
-app.use(express.json());
-
-// Sample route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-// Get the port from environment variables or use 5000 by default
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-```
-
-## Environment Variables
-
-The CLI generates an `.env.example` file where you can specify your environment variables. After copying the file to `.env`, update the following values:
-
-- **`MONGO_URI`**: MongoDB connection string (e.g., `mongodb://localhost:27017/mydatabase`).
-- **`PORT`**: The port where your app will run (default: 5000).
-- **`jwtSecret`**: Secret key used for signing JWT tokens.
-
-Here’s an example `.env` file:
-
-```plaintext
-MONGO_URI=mongodb://localhost:27017/mydatabase
-PORT=5000
-jwtSecret=your_jwt_secret_key_here
-```
 
 ## Additional Commands
 
